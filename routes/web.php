@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
 });
 
-
-Route::get('/profile', [DashboardController::class, 'contoh'])->name('contoh');
+Route::resource('/karyawan', [KaryawanController::class]);
