@@ -66,7 +66,7 @@
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
-                <a href="#" class="nav-link active" aria-current="page">
+                <a href="{{ route('home') }}" class="nav-link text-white" aria-current="page">
                   <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                   Dashboard
                 </a>
@@ -78,7 +78,7 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
+                <a href="{{ route('karyawan.index') }}" class="nav-link text-white">
                   <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
                   Karyawan
                 </a>
@@ -92,7 +92,7 @@
             </ul>
         </div>
 
-        <section id="content">
+        <section id="content" class="w-100">
             @yield('content')
         </section>
     </div>

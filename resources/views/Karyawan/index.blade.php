@@ -1,49 +1,34 @@
 @extends('layouts.app')
 
-@section('title', 'Karyawan')
+@section('title', 'Karaywan')
 
 @section('content')
 <div class="container p-5">
     <h2>Karyawan</h2>
-    <div class="row">
-        <div class="col-md-12 my-5">
-            <table class="table w-100 table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama</th>
-                    <th scope="col">Telepon</th>
-                    <th scope="col">Alamat</th>
-                    <th scope="col">Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>1</td>
-                    <td>Alfa</td>
-                    <td>081233123131</td>
-                    <td>jl xxxxxx</td>
-                    <td>
-                        <a href="" class="btn btn-warning">Edit</a>
-                        <a href="" class="btn btn-danger">Hapus</a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>1</td>
-                    <td>Reval</td>
-                    <td>081233123131</td>
-                    <td>jl xxxxxx</td>
-                    <td>
-                        <a href="" class="btn btn-warning">Edit</a>
-                        <a href="" class="btn btn-danger">Hapus</a>
-                    </td>
-                  </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah</a>
+
+    <table class="table table-striped w-100">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Username</th>
+            <th scope="col">Peran</th>
+            <th scope="col">Jenis Kelamin</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($data as $item)
+            <tr>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $item->nama }}</td>
+                <td>{{ $item->username }}</td>
+                <td>{{ $item->peran }}</td>
+                <td>{{ $item->jenis_kelamin == 'l' ? 'Laki-laki' : 'Perempuan'}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+      </table>
 </div>
 @endsection
