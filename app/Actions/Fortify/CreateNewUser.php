@@ -2,7 +2,8 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\Karyawan;
+use App\Models\Pelanggan;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -29,13 +30,19 @@ class CreateNewUser implements CreatesNewUsers
             'alamat' => ['required'],
         ])->validate();
 
-        return Karyawan::create([
+        $user = User::create([
             'username' => $input['username'],
             'password' => Hash::make($input['password']),
             'nama' => $input['nama'],
+            'peran' => 'pelanggan',
             'jenis_kelamin' => $input['jenis_kelamin'],
+        ]);
+
+        Pelanggan::create([
             'no_hp' => $input['no_hp'],
             'alamat' => $input['alamat'],
         ]);
+
+        return $user;
     }
 }

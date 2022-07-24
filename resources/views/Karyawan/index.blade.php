@@ -1,16 +1,48 @@
-@extends('layouts.auth')
+@extends('layouts.app')
 
-@section('title', 'Register')
+@section('title', 'Karyawan')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center align-items-center" style="min-height: calc(100vh - 107px)">
-        <div class="col-md-6 my-5">
-            <div class="text-center mb-2">
-                <img src="{{ asset('assets/img/logo.png') }}" width="100px" class="m-auto" alt="">
-            </div>
-            <h2 class="text-center mb-5">Karyawan</h2>
-
+<div class="container p-5">
+    <h2>Karyawan</h2>
+    <div class="row">
+        <div class="col-md-12 my-5">
+            <table class="table w-100 table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Telepon</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>Alfa</td>
+                    <td>081233123131</td>
+                    <td>jl xxxxxx</td>
+                    <td>
+                        <a href="" class="btn btn-warning">Edit</a>
+                        <a href="" class="btn btn-danger">Hapus</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>1</td>
+                    <td>Reval</td>
+                    <td>081233123131</td>
+                    <td>jl xxxxxx</td>
+                    <td>
+                        <a href="" class="btn btn-warning">Edit</a>
+                        <a href="" class="btn btn-danger">Hapus</a>
+                    </td>
+                  </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

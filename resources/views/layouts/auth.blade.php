@@ -28,11 +28,6 @@
 
               <ul class="navbar-nav my-2 my-lg-0">
                 @auth
-                    <li class="nav-item">
-                        <a href="{{ route('withdraw') }}" class="nav-link">
-                            <span class="nav-text">Rp. {{ number_format(balance_total(), '0', ',', '.') }}</span>
-                        </a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                             <span class="nav-text">Hi, {{Auth::user()->name}}</span>

@@ -105,7 +105,7 @@
                 </div>
 
                 <div class="form-group row justify-content-between">
-                    <label for="no_hp" class="col-sm-2 col-form-label">{{ __('No WA') }}</label>
+                    <label for="no_hp" class="col-sm-2 col-form-label">{{ __('No HP') }}</label>
 
                     <div class="col-md-9">
                         <input id="no_hp" type="text" class="form-control{{ $errors->has('no_hp') ? ' is-invalid' : '' }}" name="no_hp" value="{{ old('id') }}" required autofocus>

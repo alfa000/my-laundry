@@ -44,14 +44,7 @@
 
                 <div class="form-group row justify-content-between">
                     <div class="col-md-8">
-                        klik <a href="">register</a> jika belum mempunyai akun
-                    </div>
-                    <div class="col-md-4 text-right">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                            </label>
-                        </div>
+                        klik <a href="{{ route('register') }}">register</a> jika belum mempunyai akun
                     </div>
                 </div>
 

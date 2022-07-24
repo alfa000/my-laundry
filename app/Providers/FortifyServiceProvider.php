@@ -46,19 +46,19 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($username.$request->ip());
         });
 
-        Fortify::authenticateUsing(function (Request $request) {
-            $user = Pelanggan::where('username', $request->username)
-            ->first();
+        // Fortify::authenticateUsing(function (Request $request) {
+        //     $user = Pelanggan::where('username', $request->username)
+        //     ->first();
 
-            if (!$user) {
-                $user = Karyawan::where('username', $request->username)
-                ->first();
-            }
+        //     if (!$user) {
+        //         $user = Karyawan::where('username', $request->username)
+        //         ->first();
+        //     }
 
-            if ($user && Hash::check($request->password, $user->password)) {
-                return $user;
-            }
-        });
+        //     if ($user && Hash::check($request->password, $user->password)) {
+        //         return $user;
+        //     }
+        // });
 
         Fortify::loginView(function () {
             return view('auth.login');

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class JenisCuci extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'kode_jenis_cuci';
+    public $timestamps = false;
+
 }

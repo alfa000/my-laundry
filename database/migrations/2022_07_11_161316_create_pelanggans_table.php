@@ -14,15 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pelanggans', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama', 35);
-            $table->string('username', 25);
-            $table->string('password', 60);
-            $table->enum('jenis_kelamin', ['l', 'p']);
+            $table->id('id_pelanggan');
             $table->string('no_hp', 13);
-            $table->text('alamat');
-            // $table->rememberToken();
-            // $table->timestamps();
+            $table->string('alamat', 70);
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        // Schema::create('karyawans', function (Blueprint $table) {
-        //     $table->id();
-        //     $table->string('nama');
-        //     $table->string('username');
-        //     $table->string('password');
-        //     $table->enum('peran', ['manajer', 'kasir']);
-        //     $table->string('no_hp', 13);
-        //     $table->text('alamat');
-        //     $table->rememberToken();
-        //     $table->timestamps();
-        // });
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('id_user');
+            $table->string('nama', 35);
+            $table->string('username', 25)->unique();
+            $table->string('password', 60);
+            $table->enum('peran', ['pelanggan', 'kasir', 'manajer']);
+            $table->enum('jenis_kelamin', ['l', 'p']);
+        });
     }
 
     /**

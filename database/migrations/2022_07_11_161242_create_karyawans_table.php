@@ -14,16 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('karyawans', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama', 35);
-            $table->string('username', 25);
-            $table->string('password', 60);
-            $table->enum('peran', ['manajer', 'kasir']);
-            $table->enum('jenis_kelamin', ['l', 'p']);
-            $table->string('no_hp', 13);
-            $table->text('alamat');
-            // $table->rememberToken();
-            // $table->timestamps();
+            $table->id('id_karyawan');
+            $table->date('tgl_lahir');
+            $table->date('karyawan_sejak');
+            $table->unsignedBigInteger('id_user');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 
