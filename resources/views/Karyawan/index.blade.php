@@ -8,7 +8,7 @@
 
     <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah</a>
 
-    <table class="table table-striped w-100">
+    <table class="table table-striped w-100 datatables">
         <thead>
           <tr>
             <th scope="col">No</th>
@@ -16,6 +16,9 @@
             <th scope="col">Username</th>
             <th scope="col">Peran</th>
             <th scope="col">Jenis Kelamin</th>
+            <th scope="col">Tgl Lahir</th>
+            <th scope="col">Karyawan Sejak</th>
+            <th scope="col">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -26,9 +29,23 @@
                 <td>{{ $item->username }}</td>
                 <td>{{ $item->peran }}</td>
                 <td>{{ $item->jenis_kelamin == 'l' ? 'Laki-laki' : 'Perempuan'}}</td>
+                <td>{{ $item->karyawan->tgl_lahir }}</td>
+                <td>{{ $item->karyawan->karyawan_sejak }}</td>
+                <td>
+                    <a href="{{ route('karyawan.edit', $item->id_user) }}" class="btn btn-warning text-light">Edit</a>
+                    <a href="{{ route('karyawan.edit', $item->id_user) }}" class="btn btn-danger">Hapus</a>
+                </td>
             </tr>
             @endforeach
         </tbody>
       </table>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    @if (session('success'))
+        Swal.fire('Sukses', '{{ session("success") }}', 'success')
+    @endif
+</script>
+@endpush

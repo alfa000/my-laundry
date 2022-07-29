@@ -19,12 +19,6 @@
 
                     <div class="col-md-9">
                         <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('id') }}" required autofocus>
-
-                        @if ($errors->has('username'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                        @endif
                     </div>
                 </div>
 
@@ -33,12 +27,6 @@
 
                     <div class="col-md-9">
                         <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                        @if ($errors->has('password'))
-                            <span class="invalid-feedback">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                        @endif
                     </div>
                 </div>
 
@@ -60,3 +48,11 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    @if ($errors->any())
+        Swal.fire('Peringatan!', 'Nama Pengguna atau Kata Sandi Salah!', 'warning')
+    @endif
+</script>
+@endpush

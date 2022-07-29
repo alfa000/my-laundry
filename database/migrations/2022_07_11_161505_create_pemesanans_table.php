@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id('no_pemesanan');
             $table->unsignedBigInteger('id_karyawan');
-            $table->foreign('id_karyawan')->references('id_karyawan')->on('karyawans');
+            $table->foreign('id_karyawan')->references('id_user')->on('users');
             $table->unsignedBigInteger('id_pelanggan');
-            $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans');
+            $table->foreign('id_pelanggan')->references('id_user')->on('users');
             $table->unsignedBigInteger('kode_jenis_cuci');
             $table->foreign('kode_jenis_cuci')->references('kode_jenis_cuci')->on('jenis_cucis');
             $table->integer('jumlah');
