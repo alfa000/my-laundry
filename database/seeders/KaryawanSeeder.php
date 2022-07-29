@@ -18,7 +18,7 @@ class KaryawanSeeder extends Seeder
             'username' => 'adnan',
             'password' => bcrypt('adnan123'),
             'nama' => 'Adnan Al-farizi Rahmat',
-            'peran' => 'Manajer',
+            'peran' => 'manajer',
             'jenis_kelamin' => 'l',
         ]);
 
