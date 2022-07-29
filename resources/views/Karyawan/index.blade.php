@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Karaywan')
+@section('title', 'Karyawan')
 
 @section('content')
 <div class="container p-5">
@@ -11,7 +11,7 @@
     <table class="table table-striped w-100 datatables">
         <thead>
           <tr>
-            <th scope="col">No</th>
+            <th scope="col">Id</th>
             <th scope="col">Nama</th>
             <th scope="col">Username</th>
             <th scope="col">Peran</th>

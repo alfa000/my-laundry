@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\JenisCuciController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('home');
 
+
+
     Route::resource('/karyawan', KaryawanController::class);
+    Route::resource('/jeniscuci', JenisCuciController::class);
+
+
+
+
+
 });

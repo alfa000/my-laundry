@@ -11,5 +11,10 @@ class JenisCuci extends Model
 
     protected $primaryKey = 'kode_jenis_cuci';
     public $timestamps = false;
+    protected $fillable =['kode_jenis_cuci',
+                        'nama',
+                        'harga',
+                        'satuan',
+                        'hari' ];
 
 }

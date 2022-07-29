@@ -89,8 +89,8 @@
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                <a href="{{route('jeniscuci.index')}}"class="nav-link text-white">
+                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#"></use></svg>
                   Jenis Cuci
                 </a>
               </li>
