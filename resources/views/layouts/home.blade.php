@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
 
     <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
 
@@ -32,10 +31,15 @@
                 @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            <span class="nav-text">Hi, {{Auth::user()->name}}</span>
+                            <span class="nav-text">Hi, {{Auth::user()->nama}}</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('item.index') }}">My Items</a>
+                            <a href="{{ route('pelanggan.index') }}" class="dropdown-item">
+                                Profil
+                            </a>
+                            <a href="{{ route('pelanggan.pemesanan') }}" class="dropdown-item">
+                                Pemesanan
+                            </a>
                             <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <span class="nav-text">{{ __('Logout') }}</span>
                             </a>

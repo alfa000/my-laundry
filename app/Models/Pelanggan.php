@@ -10,5 +10,5 @@ class Pelanggan extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['no_hp', 'alamat'];
+    protected $fillable = ['no_hp', 'alamat', 'id_user'];
 }
