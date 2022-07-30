@@ -9,7 +9,7 @@ class Pelanggan extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_user';`
+    protected $primaryKey = 'id_user';
     public $timestamps = false;
     protected $fillable = ['no_hp', 'alamat', 'id_user'];
 }
