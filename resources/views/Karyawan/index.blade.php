@@ -6,7 +6,7 @@
 <div class="container p-5">
     <h2>Karyawan</h2>
 
-    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah</a>
+    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah Karyawan</a>
 
     <table class="table table-striped w-100 datatables">
         <thead>
