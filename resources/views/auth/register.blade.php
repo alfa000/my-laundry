@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.home')
 
 @section('title', 'Register')
 
@@ -84,7 +84,7 @@
 
                     <div class="col-md-9">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="l" value="l" checked>
+                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="l" value="l">
                             <label class="form-check-label" for="l">
                               Laki-laki
                             </label>

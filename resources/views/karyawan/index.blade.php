@@ -6,7 +6,7 @@
 <div class="container p-5">
     <h2>Karyawan</h2>
 
-    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah</a>
+    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah Karyawan</a>
 
     <table class="table table-striped w-100 datatables">
         <thead>
@@ -29,8 +29,8 @@
                 <td>{{ $item->username }}</td>
                 <td>{{ $item->peran }}</td>
                 <td>{{ $item->jenis_kelamin == 'l' ? 'Laki-laki' : 'Perempuan'}}</td>
-                <td>{{ $item->karyawan->tgl_lahir }}</td>
-                <td>{{ $item->karyawan->karyawan_sejak }}</td>
+                <td>{{ $item->karyawan?->tgl_lahir }}</td>
+                <td>{{ $item->karyawan?->karyawan_sejak }}</td>
                 <td>
                     <a href="{{ route('karyawan.edit', $item->id_user) }}" class="btn btn-warning text-light">Edit</a>
                     <a href="{{ route('karyawan.edit', $item->id_user) }}" class="btn btn-danger">Hapus</a>

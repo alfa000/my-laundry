@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pelanggan;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PelangganController extends Controller
 {
@@ -14,7 +16,13 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        //
+        return view('pelanggan.index');
+    }
+
+    public function pemesanan()
+    {
+        $pemesanans = Pemesanan::where('id_pelanggan', Auth::user()->id);
+        return view('pelanggan.pemesanan', compact('pemesanans'));
     }
 
     /**
@@ -55,9 +63,9 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pelanggan $pelanggan)
+    public function edit($id)
     {
-        //
+        return view('pelanggan.form');
     }
 
     /**

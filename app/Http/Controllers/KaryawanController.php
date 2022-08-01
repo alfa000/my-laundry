@@ -18,7 +18,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $data = User::with('karyawan')->get();
+        $data = User::whereIn('peran', ['manajer', 'kasir'])->with('karyawan')->get();
         return view('karyawan.index', compact('data'));
     }
 
