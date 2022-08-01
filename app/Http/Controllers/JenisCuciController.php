@@ -46,7 +46,7 @@ class JenisCuciController extends Controller
             'harga' => $request->harga,
             'satuan' => $request->satuan,
             'hari' => $request->hari,
-            'kode_jenis_cuci' => $request->kode_jenis_cuci,
+          
         ]);
 
         return redirect(route('jeniscuci.index'));

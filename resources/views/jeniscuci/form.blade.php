@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container p-5">
-    <h2>Tambah Jenis Cuci</h2>
+    <h2>Edit Jenis Cuci</h2>
 
     <form action="{{ route('jeniscuci.store') }}" method="POST">
         @csrf
