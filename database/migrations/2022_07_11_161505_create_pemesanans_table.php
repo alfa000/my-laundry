@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id('no_pemesanan');
-            $table->unsignedBigInteger('id_karyawan');
+            $table->unsignedBigInteger('id_karyawan')->nullale();
             $table->foreign('id_karyawan')->references('id_user')->on('users');
             $table->unsignedBigInteger('id_pelanggan');
             $table->foreign('id_pelanggan')->references('id_user')->on('users');
@@ -24,9 +24,12 @@ return new class extends Migration
             $table->integer('jumlah');
             $table->date('tgl_pesanan');
             $table->date('tgl_pengambilan');
-            $table->enum('status_cuci', ['menunggu', 'diproses', 'selesai']);
-            $table->boolean('status_pembayaran');
-            $table->text('keterangan');
+            $table->enum('status_cuci', ['menunggu', 'diproses', 'selesai'])->default('menunggu');
+            $table->boolean('status_pembayaran')->default(false);
+            $table->double('total_bayar');
+            $table->double('bayar')->default(0);
+            $table->double('kembali')->default(0);
+            $table->string('keterangan', 35)->nullable();
         });
     }
 

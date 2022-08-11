@@ -4,7 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\JenisCuciController;
 use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\PemesanController;
+use App\Http\Controllers\PemesananController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,11 +21,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
 
 
-    Route::resource('/pemesanan', PemesanController::class);
+    Route::resource('/pemesanan', PemesananController::class);
 
     Route::group(['middleware' => 'role:pelanggan'], function(){
         Route::resource('/pelanggan', PelangganController::class);
-        Route::get('/pemesanan-pelanggan', [PelangganController::class, 'pemesanan'])->name('pelanggan.pemesanan');
+        Route::get('/pelanggan-form-pemesanan', [PelangganController::class, 'pemesanan'])->name('pelanggan.pemesanan');
+        Route::get('/pelanggan-data-pemesanan', [PelangganController::class, 'createPemesanan'])->name('pelanggan.pemesanan.create');
     });
 
     Route::group(['middleware' => 'role:manajer,kasir'], function(){

@@ -3,7 +3,7 @@
 @section('title', 'Karyawan')
 
 @section('content')
-<div class="container p-5">
+<div class="container p-5" style="min-height: calc(100vh - 106px)">
     <h2>Tambah Karyawan</h2>
 
     @if ($errors->any())

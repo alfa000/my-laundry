@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisCuci;
 use App\Models\Pelanggan;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
@@ -17,44 +18,6 @@ class PelangganController extends Controller
     public function index()
     {
         return view('pelanggan.index');
-    }
-
-    public function pemesanan()
-    {
-        $pemesanans = Pemesanan::where('id_pelanggan', Auth::user()->id);
-        return view('pelanggan.pemesanan', compact('pemesanans'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Pelanggan  $pelanggan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Pelanggan $pelanggan)
-    {
-        //
     }
 
     /**
@@ -80,14 +43,16 @@ class PelangganController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Pelanggan  $pelanggan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pelanggan $pelanggan)
+    public function pemesanan()
     {
-        //
+        $pemesanans = Pemesanan::where('id_pelanggan', Auth::user()->id_user)->get();
+        return view('pelanggan.data_pemesanan', compact('pemesanans'));
     }
+
+    public function createPemesanan()
+    {
+        $jenis_cucis = JenisCuci::all();
+        return view('pelanggan.form_pemesanan', compact('jenis_cucis'));
+    }
+
 }

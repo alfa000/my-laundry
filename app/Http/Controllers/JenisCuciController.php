@@ -25,7 +25,8 @@ class JenisCuciController extends Controller
      */
     public function create()
     {
-        return view('jeniscuci.form');
+        $model = new JenisCuci();
+        return view('jeniscuci.form', compact('model'));
     }
 
     /**

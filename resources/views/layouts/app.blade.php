@@ -8,7 +8,6 @@
     <title>My Laundry | @yield('title')</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,200;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
@@ -18,6 +17,7 @@
 
     <link rel="stylesheet" href="{{ asset('assets/app.css') }}">
 
+    @stack('styles')
 </head>
 <body>
     <header>
@@ -65,35 +65,37 @@
     <div class="d-flex">
         <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="min-height: calc(100vh - 56px);width: 250px;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-              <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-              <span class="fs-4">{{ Auth::User()->nama }}</span>
+                <img src="https://www.icmetl.org/wp-content/uploads/2020/11/user-icon-human-person-sign-vector-10206693.png" class="mr-3" style="width:50px" alt="">
+                <span class="fs-4">{{ Auth::User()->nama }} <br><span class="text-capitalize small">{{ Auth::User()->peran }}</span></span>
             </a>
             <hr>
             <ul class="nav nav-pills flex-column mb-auto">
               <li class="nav-item">
                 <a href="{{ route('home') }}" class="nav-link text-white" aria-current="page">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                    <i class="fa fa-home"></i>
                   Dashboard
                 </a>
               </li>
               <li>
-                <a href="#" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                <a href="{{ route('pemesanan.index') }}" class="nav-link text-white">
+                    <i class="fa fa-money-bill"></i>
                   Pemesanan
                 </a>
               </li>
+              @if (Auth::user()->peran == 'manajer')
               <li>
                 <a href="{{ route('karyawan.index') }}" class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                    <i class="fa fa-user"></i>
                   Karyawan
                 </a>
               </li>
               <li>
                 <a href="{{route('jeniscuci.index')}}"class="nav-link text-white">
-                  <svg class="bi me-2" width="16" height="16"><use xlink:href="#"></use></svg>
+                    <i class="fa-solid fa-tshirt"></i>
                   Jenis Cuci
                 </a>
               </li>
+              @endif
             </ul>
         </div>
 

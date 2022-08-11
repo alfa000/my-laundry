@@ -14,6 +14,19 @@ class JenisCuciSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\JenisCuci::insert([
+            [
+                'nama' => 'Cuci Kering',
+                'harga' => '6000',
+                'satuan' => 'kg',
+                'hari' => '3',
+            ],
+            [
+                'nama' => 'Cuci Setrika',
+                'harga' => '7000',
+                'satuan' => 'kg',
+                'hari' => '3',
+            ],
+        ]);
     }
 }

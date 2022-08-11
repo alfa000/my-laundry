@@ -3,10 +3,10 @@
 @section('title', 'Karyawan')
 
 @section('content')
-<div class="container p-5">
+<div class="container p-5" style="min-height: calc(100vh - 106px)">
     <h2>Karyawan</h2>
 
-    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah Karyawan</a>
+    <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-2">+ Tambah</a>
 
     <table class="table table-striped w-100 datatables">
         <thead>
