@@ -3,8 +3,8 @@
 @section('title', 'JenisCuci')
 
 @section('content')
-<div class="container p-5" style="min-height: calc(100vh - 106px)">
-    <h2>Jenis Cuci</h2>
+<div class="container p-5">
+    <h2>Tambah Jenis Cuci</h2>
 
     <form action="{{ route('jeniscuci.store') }}" method="POST">
         @csrf
