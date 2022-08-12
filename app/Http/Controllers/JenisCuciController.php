@@ -47,7 +47,7 @@ class JenisCuciController extends Controller
             'harga' => $request->harga,
             'satuan' => $request->satuan,
             'hari' => $request->hari,
-          
+
         ]);
 
         return redirect(route('jeniscuci.index'));
@@ -72,7 +72,8 @@ class JenisCuciController extends Controller
      */
     public function edit($id)
     {
-        //
+        $model = JenisCuci::find($id);
+        return view('jeniscuci.form', compact('model'));
     }
 
     /**
@@ -84,7 +85,18 @@ class JenisCuciController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+        ]);
+
+        JenisCuci::find($id)->update([
+            'nama' => $request->nama,
+            'harga' => $request->harga,
+            'satuan' => $request->satuan,
+            'hari' => $request->hari,
+        ]);
+
+        return redirect(route('jeniscuci.index'));
     }
 
     /**
@@ -95,6 +107,6 @@ class JenisCuciController extends Controller
      */
     public function destroy($id)
     {
-        //
+        JenisCuci::find($id)->delete();
     }
 }

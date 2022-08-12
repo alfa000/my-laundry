@@ -14,8 +14,9 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('pelanggan.update', Auth::user()->id_user) }}">
         @csrf
+        @method('PUT')
 
         <div class="form-group row justify-content-between">
             <label for="username" class="col-sm-2 col-form-label">{{ __('Username') }}</label>

@@ -6,17 +6,18 @@
 <div class="container p-5">
     <h2>Tambah Jenis Cuci</h2>
 
-    <form action="{{ route('jeniscuci.store') }}" method="POST">
+    <form action="{{ $model->exists ? route('jeniscuci.update', $model->kode_jenis_cuci) : route('jeniscuci.store') }}" method="POST">
         @csrf
+        @method($model->exists ? 'PUT' : 'POST')
 
         <div class="form-group">
           <label for="nama">Nama</label>
-          <input type="text" class="form-control" id="nama" name="nama" required>
+          <input type="text" class="form-control" id="nama" name="nama" value="{{ $model->nama }}" required>
         </div>
 
         <div class="form-group"Harga>
           <label for="harga">Harga</label>
-          <input type="text" class="form-control" id="harga" name="harga" required>
+          <input type="text" class="form-control" id="harga" name="harga" value="{{ $model->harga }}" required>
         </div>
 
         <div class="form-group">
@@ -37,7 +38,7 @@
 
         <div class="form-group">
           <label for="hari">Hari</label>
-          <input type="integer" class="form-control" id="hari" name="hari" required>
+          <input type="number" class="form-control" id="hari" name="hari" value="{{ $model->hari }}" required>
         </div>
 
 

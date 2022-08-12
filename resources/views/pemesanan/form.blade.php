@@ -30,7 +30,7 @@
             </ul>
         </div>
     @endif
-    <form method="POST" action="{{ route('pemesanan.update', $pemesanan->no_pemesanan) }}">
+    <form method="POST" action="{{ $pemesanan->status_cuci == 'diproses' ? route('pemesanan.update.status', $pemesanan->no_pemesanan) : route('pemesanan.update', $pemesanan->no_pemesanan) }}">
         @csrf
         @method('PUT')
 
@@ -86,7 +86,7 @@
             <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
 
             <div class="col-md-9">
-                <input id="jumlah" type="number" class="form-control{{ $errors->has('jumlah') ? ' is-invalid' : '' }}" name="jumlah" value="{{ $pemesanan->jumlah }}" required autofocus>
+                <input id="jumlah" type="number" class="form-control{{ $errors->has('jumlah') ? ' is-invalid' : '' }}" name="jumlah" value="{{ $pemesanan->jumlah }}" required autofocus {{ $pemesanan->status_cuci == 'diproses' ? 'readonly' : '' }}>
 
                 @if ($errors->has('jumlah'))
                     <span class="invalid-feedback">
@@ -118,18 +118,44 @@
             </div>
         </div>
 
-
         <div class="form-group row justify-content-between">
-            <label class="col-sm-2 col-form-label">Jumlah Bayar</label>
+            <label for="jenis_cuci" class="col-sm-2 col-form-label">Bayar Sekarang</label>
+
             <div class="col-md-9">
-                <input type="number" class="form-control" id="jumlah_bayar" name="jumlah_bayar" required>
+                <div class="form-check form-check-inline ">
+                    <input class="form-check-input" type="radio" id="ya" value="true" name="status_pembayaran" checked>
+                    <label class="form-check-label" for="ya">
+                        Ya
+                    </label>
+                </div>
+                <div class="form-check form-check-inline ">
+                    <input class="form-check-input" type="radio" id="tidak" value="false" name="status_pembayaran">
+                    <label class="form-check-label" for="tidak">
+                        Tidak
+                    </label>
+                </div>
+
+                @if ($errors->has('jenis_cuci'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('jenis_cuci') }}</strong>
+                    </span>
+                @endif
             </div>
         </div>
 
-        <div class="form-group row justify-content-between">
-            <label class="col-sm-2 col-form-label">Kembalian</label>
-            <div class="col-md-9">
-                <input type="text" class="form-control" id="kembalian" name="kembalian" required readonly>
+        <div class="bayar">
+            <div class="form-group row justify-content-between">
+                <label class="col-sm-2 col-form-label">Jumlah Bayar</label>
+                <div class="col-md-9">
+                    <input type="number" class="form-control" id="jumlah_bayar" name="jumlah_bayar" required>
+                </div>
+            </div>
+
+            <div class="form-group row justify-content-between">
+                <label class="col-sm-2 col-form-label">Kembalian</label>
+                <div class="col-md-9">
+                    <input type="number" class="form-control" id="kembalian" name="kembalian" required readonly>
+                </div>
             </div>
         </div>
 
@@ -144,7 +170,7 @@
         <div class="form-group row justify-content-between">
             <div class="col-md-12 text-right">
                 <button type="submit" class="btn btn-primary">
-                    Pesan
+                    Submit
                 </button>
             </div>
         </div>
@@ -163,15 +189,29 @@
         const date = new Date();
         date.setDate(date.getDate() + hari);
 
-        $('#tgl_pengambilan').val(date.toISOString().substr(0, 10))
+        @if ($pemesanan->status_cuci != 'diproses')
+            $('#tgl_pengambilan').val(date.toISOString().substr(0, 10))
+        @endif
         $('#total_bayar').val(harga*jumlah)
-        $('#jumlah_bayar').attr('min', total_bayar);
+        $('#jumlah_bayar').attr('min', $('#total_bayar').val());
     });
     $('#jumlah').keyup();
 
+    $('input[name="status_pembayaran"]').click(function () {
+        if ($(this).is(':checked') && $(this).val() == 'true') {
+            $('.bayar').show();
+            $('.bayar input').prop('required', true);
+        }else{
+            $('.bayar').hide();
+            $('.bayar input').prop('required', false);
+        }
+    });
+
     $('input[name="jumlah_bayar"]').keyup(function () {
         kembalian = $(this).val() - $('#total_bayar').val();
-        $('#kembalian').val(kembalian);
+        if (kembalian >= 0) {
+            $('#kembalian').val(kembalian);
+        }
     });
 </script>
 @endpush

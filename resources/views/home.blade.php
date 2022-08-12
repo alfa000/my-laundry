@@ -12,8 +12,8 @@
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-arrow-down text-white fa-2xl mr-3"></i>
                         <h5 class="text-white">
-                            Pesanan Hari Ini <br>
-                            <small>1</small>
+                            Pemesanan Hari Ini <br>
+                            <small>{{ $pemesanan }}</small>
                         </h5>
                     </div>
                 </div>
@@ -25,8 +25,8 @@
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-arrow-up text-white fa-2xl mr-3"></i>
                         <h5 class="text-white">
-                            Pemabilan Hari Ini  <br>
-                            <small>1</small>
+                            Pengambilan Hari Ini  <br>
+                            <small>{{ $pengambilan }}</small>
                         </h5>
                     </div>
                 </div>

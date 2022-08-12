@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JenisCuci;
 use App\Models\Pelanggan;
 use App\Models\Pemesanan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,9 +39,31 @@ class PelangganController extends Controller
      * @param  \App\Models\Pelanggan  $pelanggan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pelanggan $pelanggan)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'jenis_kelamin' => 'required',
+        ]);
+
+        $data = [
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'jenis_kelamin' => $request->jenis_kelamin,
+        ];
+
+        if ($request->password) {
+            $data['password'] =  bcrypt($request->password);
+        }
+
+        User::where('id_user', $id)->update($data);
+
+        Pelanggan::where('id_user', $id)->update([
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+        ]);
+
+        return redirect(route('pelanggan.index'))->with('success', 'Data Berhasil Disimpan');
     }
 
     public function pemesanan()

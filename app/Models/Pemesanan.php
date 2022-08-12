@@ -23,6 +23,7 @@ class Pemesanan extends Model
         'status_cuci',
         'status_pembayaran',
         'bayar',
+        'kembali',
         'keterangan',
     ];
 

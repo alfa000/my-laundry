@@ -20,6 +20,12 @@ class PemesananController extends Controller
         return view('pemesanan.index', compact('pemesanans'));
     }
 
+    public function print()
+    {
+        $pemesanans = Pemesanan::all();
+        return view('pemesanan.print', compact('pemesanans'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -95,8 +101,29 @@ class PemesananController extends Controller
             'tgl_pengambilan' => $request->tgl_pengambilan,
             'total_bayar' => $request->total_bayar,
             'status_cuci' => 'diproses',
+            'status_pembayaran' => ($request->status_pembayaran == 'true' ? 1 : 0),
+            'bayar' => $request->jumlah_bayar,
+            'kembali' => $request->kembalian,
             'keterangan' => $request->keterangan,
         ]);
+
+        return redirect(route('pemesanan.index'))->with('success', 'Data Berhasil Disimpan');
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        if ($request->jumlah_bayar) {
+            Pemesanan::find($id)->update([
+                'status_cuci' => 'selesai',
+                'status_pembayaran' => ($request->status_pembayaran == 'true' ? 1 : 0),
+                'bayar' => $request->jumlah_bayar,
+                'kembali' => $request->kembalian,
+            ]);
+        }else{
+            Pemesanan::find($id)->update([
+                'status_cuci' => 'selesai',
+            ]);
+        }
 
         return redirect(route('pemesanan.index'))->with('success', 'Data Berhasil Disimpan');
     }

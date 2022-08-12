@@ -33,7 +33,7 @@
                 <td>{{ $item->karyawan?->karyawan_sejak }}</td>
                 <td>
                     <a href="{{ route('karyawan.edit', $item->id_user) }}" class="btn btn-warning text-light">Edit</a>
-                    <a href="{{ route('karyawan.edit', $item->id_user) }}" class="btn btn-danger">Hapus</a>
+                    <a href="{{ route('karyawan.destroy', $item->id_user) }}" class="btn btn-danger btn-hapus">Hapus</a>
                 </td>
             </tr>
             @endforeach

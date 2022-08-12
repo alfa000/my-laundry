@@ -26,7 +26,7 @@
             Jenis Kelamin
         </div>
         <div class="col-md-4">
-            {{ Auth::user()->jenis_kelamin }}
+            {{ Auth::user()->jenis_kelamin == 'l' ? 'Laki-laki' : 'Perempuan' }}
         </div>
     </div>
     <div class="row align-items-center mb-3">

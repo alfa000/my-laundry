@@ -28,11 +28,19 @@
                 <td>{{ $pemesanan->no_pemesanan }}</td>
                 <td>{{ $pemesanan->jenis_cuci->nama }}</td>
                 <td>{{ $pemesanan->jumlah }}</td>
-                <td>{{ $pemesanan->tgl_pesanan->format('d-m-Y') }}</td>
-                <td>{{ $pemesanan->tgl_pengambilan->format('d-m-Y') }}</td>
-                <td class="text-uppercase">{{ $pemesanan->status_cuci }}</td>
+                <td>{{ $pemesanan->tgl_pesanan->format('d/m/Y') }}</td>
+                <td>{{ $pemesanan->tgl_pengambilan->format('d/m/Y') }}</td>
+                <td class="text-capitalize">
+                    @if ($pemesanan->status_cuci == 'menunggu')
+                        <span class="badge badge-warning">Menunggu</span>
+                    @elseif ($pemesanan->status_cuci == 'diproses')
+                        <span class="badge badge-info">Diperoses</span>
+                    @else
+                        <span class="badge badge-success">Selesai</span>
+                    @endif
+                </td>
                 <td>
-                    <a href="{{ route('pemesanan.show', $pemesanan->no_pemesanan) }}" class="btn btn-warning text-light" title="Nota"><i class="fa-solid fa-file-invoice"></i></a>
+                    <a href="{{ route('pemesanan.show', $pemesanan->no_pemesanan) }}" data-toggle="tooltip" class="btn btn-warning text-light" title="Nota"><i class="fa-solid fa-file-invoice"></i></a>
                 </td>
             </tr>
             @endforeach

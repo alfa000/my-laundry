@@ -28,7 +28,7 @@
                 <td>{{ $item->hari }}</td>
                 <td>
                     <a href="{{ route('jeniscuci.edit', $item->kode_jenis_cuci) }}" class="btn btn-warning text-light">Edit</a>
-                    <a href="{{ route('jeniscuci.edit', $item->kode_jenis_cuci) }}" class="btn btn-danger">Hapus</a>
+                    <a href="{{ route('jeniscuci.destroy', $item->kode_jenis_cuci) }}" class="btn btn-danger btn-hapus">Hapus</a>
                 </td>
             </tr>
             @endforeach

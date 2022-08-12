@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::group(['middleware' => 'role:manajer,kasir'], function(){
         Route::get('/', [DashboardController::class, 'index'])->name('home');
+        Route::put('/pemesanan-update-status/{id}', [PemesananController::class, 'updateStatus'])->name('pemesanan.update.status');
+        Route::get('/pemesanan-print', [PemesananController::class, 'print'])->name('pemesanan.print');
     });
 
     Route::group(['middleware' => 'role:manajer'], function(){
